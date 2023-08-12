@@ -37,8 +37,8 @@ export const cartReducer = (state, action) => {
             const removeState = state.filter(item => item.id !== actionPayload.id)
             updateLocalStorage(removeState)
         case CART_ACTION_TYPES.CLEAR_CART:
-            updateLocalStorage(cartInitialState)
-            return initialState
+            updateLocalStorage([])
+            return []
         default:
             updateLocalStorage(state)
             return state
