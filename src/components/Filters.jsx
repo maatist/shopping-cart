@@ -4,14 +4,20 @@ import { useFilters } from '../hooks/useFilters'
 
 export function Filters () {
   const { filters, setFilters } = useFilters()
+  const [minPrice, setMinPrice] = useState(filters.minPrice)
 
   const minPriceFilterId = useId()
   const categoryFilterId = useId()
 
+  
   const handleChangeMinPrice = (event) => {
+    setMinPrice(event.target.value)
+  }
+
+  const handleChangeMinPriceApply = (event) => {
     setFilters(prevState => ({
       ...prevState,
-      minPrice: event.target.value
+      minPrice: minPrice
     }))
   }
 
@@ -33,9 +39,14 @@ export function Filters () {
           min='0'
           max='1000'
           onChange={handleChangeMinPrice}
-          value={filters.minPrice}
+          value={minPrice}
         />
-        <span>${filters.minPrice}</span>
+        <span>${minPrice}</span>
+        <span>
+          <button onClick={handleChangeMinPriceApply}>
+            Aplicar
+          </button>
+        </span>
       </div>
 
       <div>
@@ -45,6 +56,7 @@ export function Filters () {
           <option value='laptops'>Notebooks</option>
           <option value='smartphones'>Celulares</option>
           <option value='home-decoration'>Decoracion de casa</option>
+          <option value='motorcycle'>Motos</option>
         </select>
       </div>
 

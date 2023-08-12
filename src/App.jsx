@@ -11,17 +11,29 @@ function App () {
 
   const [isLoading, setIsLoading] = useState(true)
   const [productos, setProductos] = useState(null)
+  const [fetchURL, setFetchURL] = useState('https://dummyjson.com/products?limit=20&skip=0')
 
-  const {filterProducts} = useFilters()
+  
+  const {filterProducts, filters} = useFilters()
+
+  console.log(filters.category)
+
+  useEffect(() => {
+    if (filters.category === 'all') {
+      setFetchURL(`https://dummyjson.com/products?limit=20&skip=0`)
+    } else
+    setFetchURL(`https://dummyjson.com/products/category/${filters.category}?limit=20&skip=0`)
+  }, [filters.category])
+
 
    useEffect(() => {
-    fetch('https://dummyjson.com/products?limit=20&skip=0')
+    fetch(fetchURL)
     .then(response => response.json())
     .then(products => {
       setProductos(products.products)
       setIsLoading(false)
     })
-  }, [])
+  }, [fetchURL])
 
   if (isLoading) { // ⬅️ si está cargando, mostramos un texto que lo indique
     return (
