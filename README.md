@@ -1,8 +1,5 @@
-# React + Vite
+# React + Vite Shopping Cart Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto para practicar React en donde se traen productos desde una api y se maneja un carrito de compras con estos productos con localStorage.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Se utilizan hooks useState, useEffect, useContext, useReducer
